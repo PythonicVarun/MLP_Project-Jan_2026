@@ -46,6 +46,26 @@ The dataset consists of approximately 198,000 training samples and 102,000 test 
 - **Visualization**: Matplotlib, Seaborn
 - **Environment**: Jupyter Notebook / Kaggle Kernels
 
+## Project Rules
+
+Only the following libraries were allowed to be used in the competition:
+
+1.  [NumPy](https://numpy.org/doc/stable/user/index.html)
+2.  [Pandas](https://pandas.pydata.org/docs/user_guide/index.html)
+3.  [Matplotlib](https://matplotlib.org/stable/users/index)
+4.  [Scikit-learn](https://scikit-learn.org/stable/supervised_learning.html)
+5.  [XGBoost](https://xgboost.readthedocs.io/en/latest/install.html)
+6.  [Seaborn](https://seaborn.pydata.org/)
+7.  [Imblearn](https://imbalanced-learn.org/stable/)
+8.  [SciPy](https://docs.scipy.org/doc/scipy/tutorial/index.html)
+9.  [Pickle](https://docs.python.org/3/library/pickle.html)
+10. [regex](https://docs.python.org/3/library/re.html)
+11. [Lightgbm](https://lightgbm.readthedocs.io/en/stable/)
+12. [Plotly](https://plotly.com/)
+13. [statsmodel](https://www.statsmodels.org/stable/index.html)
+
+**Note:** These libraries are already installed in your Kaggle notebook. Python in-built libraries can also be used. *Using libraries like TensorFlow, PyTorch, NLTK, word2vec, textblob etc is **NOT** allowed*.
+
 ## Setup and Usage
 
 ### Prerequisites
