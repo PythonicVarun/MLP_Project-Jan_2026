@@ -8,12 +8,12 @@ The goal is to build a robust multiclass classification model that can accuratel
 
 ## Dataset Description
 
-The dataset consists of approximately 198,000 training samples and 102,000 test samples.
+The dataset consists of approximately 198,000 training samples and 102,000 test samples, with a total of 14 features. The target variable (`label`) has four classes: 0, 1, 2, and 3, representing different internal handling categories.
 
 ### Data Files
-- `datasets/train.csv`: Training set with labels.
-- `datasets/test.csv`: Test set for which predictions are required.
-- `datasets/sample_submission.csv`: Sample format for submissions.
+- `datasets/train.csv`: Training set with labels. (70.17 MB)
+- `datasets/test.csv`: Test set for which predictions are required. (35.93 MB)
+- `datasets/sample_submission.csv`: Sample format for submissions. (0.77 MB)
 
 ### Features
 - **comment**: The raw text content of the comment.
