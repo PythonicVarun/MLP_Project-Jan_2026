@@ -11,3 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [165a8e3](https://github.com/PythonicVarun/MLP_Project-Jan_2026/commit/165a8e35277bf48fecef2af8a482c86654bda8d5) 08-02-2026
 - Added some new features in feature engineering, which improved the model performance by **$\sim$ 1%**.
 - Fixed logical errors in text cleaning function, which caused some noise in the data and improved the model performance by **$\sim$ 1%**.
+
+## [7f23d46](https://github.com/PythonicVarun/MLP_Project-Jan_2026/commit/7f23d46be009798d681d8987a951b64a3dd5e50f) 10-02-2026
+- Added character level TF-IDF features, which improved the model performance by **$\sim$ 1%**.
+
+## [028b483](https://github.com/PythonicVarun/MLP_Project-Jan_2026/commit/028b483b385ecc4ba88ce93c3f0efe920798773e) 11-02-2026
+- Added english stop words in text cleaning function, which improved the model performance by **$\sim$ 0.5%**.
+- Increased max features in TF-IDF vectorizer from 2500 to 3000, which improved the model performance by **$\sim$ 0.5%**.
+- Added MLP model for ensemble, which improved the model performance by **$\sim$ 1%**.
