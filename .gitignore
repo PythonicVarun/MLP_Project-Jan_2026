@@ -14,3 +14,6 @@ wheels/
 
 # Dataspell
 .idea/
+
+# Temporary scratch files
+scratch.ipynb
