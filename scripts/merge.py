@@ -56,7 +56,7 @@ def merge_notebooks():
     master_nb.cells.append(nbformat.v4.new_markdown_cell(auto_msg_source))
 
     # "Stop Execution" code cell
-    stop_source = "# stop execution here\n" "import sys\n" "sys.exit(0)"
+    stop_source = "# stop execution here\n\n" "import sys\n" "sys.exit(0)"
     stop_cell = nbformat.v4.new_code_cell(stop_source)
     master_nb.cells.append(stop_cell)
 
