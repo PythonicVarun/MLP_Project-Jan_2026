@@ -81,7 +81,7 @@ This project uses `uv` for dependency management.
 ### Running the Project
 The core logic and analysis are contained within the Jupyter notebook:
 ```bash
-jupyter lab 24f2004142-notebook-t12026.ipynb
+jupyter lab competition.ipynb
 ```
 
 ## ✍️ Author
