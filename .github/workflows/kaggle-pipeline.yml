@@ -41,7 +41,6 @@ jobs:
         run: uvx ty check .
 
       - name: 💾 Commit and Push Result
-        id: auto_commit
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -51,10 +50,8 @@ jobs:
             git add "24f2004142-notebook-t12026.ipynb"
             git commit -m "🤖 auto: generate submission notebook [skip ci]"
             git push
-            echo "committed=true" >> $GITHUB_OUTPUT
           else
             echo "No changes from merge script."
-            echo "committed=false" >> $GITHUB_OUTPUT
           fi
 
       - name: 📈 Push to Kaggle
@@ -62,7 +59,7 @@ jobs:
         env:
           KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
         run: |
-          TARGET_FILE=$(jq -r '.code_file' kernel-metadata.json)
+          TARGET_FILE="competition.ipynb"
 
           echo "Notebook file: $TARGET_FILE"
 
@@ -77,11 +74,8 @@ jobs:
 
           WAS_UPDATED_BY_SCRIPT="${{ steps.auto_commit.outputs.committed }}"
 
-          if [[ "$WAS_UPDATED_BY_SCRIPT" == "true" ]]; then
-             echo "✅ Merge script updated the notebook. Pushing to Kaggle..."
-             uvx kaggle kernels push
-          elif [[ "$CHANGED_FILES" == "$TARGET_FILE" || "$CHANGED_FILES" == "competition.ipynb" ]]; then
-            echo "✅ Manual changes detected in $TARGET_FILE. Pushing to Kaggle..."
+          if [[ "$CHANGED_FILES" == "$TARGET_FILE" ]]; then
+            echo "✅ Changes detected in $TARGET_FILE. Pushing to Kaggle..."
             uvx kaggle kernels push
           else
             echo "🚫 No changes detected in $TARGET_FILE. Skipping push."
