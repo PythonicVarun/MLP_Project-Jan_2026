@@ -30,29 +30,13 @@ jobs:
         run: uv sync
 
       - name: 📒 Install nbformat
-        run: |
-          uv pip install nbformat
+        run: uv pip install nbformat
 
       - name: 🔨 Run Merge Script
-        run: |
-          uv run scripts/merge.py
+        run: uv run scripts/merge.py
 
       - name: 🔍 Run ty
         run: uvx ty check .
-
-      - name: 💾 Commit and Push Result
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Check if the output file has changed
-          if [[ -n $(git status -s "24f2004142-notebook-t12026.ipynb") ]]; then
-            git add "24f2004142-notebook-t12026.ipynb"
-            git commit -m "🤖 auto: generate submission notebook [skip ci]"
-            git push
-          else
-            echo "No changes from merge script."
-          fi
 
       - name: 📈 Push to Kaggle
         if: success()
@@ -71,12 +55,32 @@ jobs:
           # github.event.before = commit before push
           # github.sha = current commit
           CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" ${{ github.sha }})
-
-          WAS_UPDATED_BY_SCRIPT="${{ steps.auto_commit.outputs.committed }}"
-
           if [[ "$CHANGED_FILES" == "$TARGET_FILE" ]]; then
             echo "✅ Changes detected in $TARGET_FILE. Pushing to Kaggle..."
             uvx kaggle kernels push
           else
             echo "🚫 No changes detected in $TARGET_FILE. Skipping push."
+          fi
+
+      - name: 💾 Push to 'output' branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          echo "ℹ️ Moving generated notebook to /tmp..."
+          cp "24f2004142-notebook-t12026.ipynb" /tmp/submission.ipynb
+
+          echo "ℹ️ Switching to output branch..."
+          git fetch origin output || git checkout --orphan output
+          git checkout output || git checkout -b output
+
+          mv /tmp/submission.ipynb "24f2004142-notebook-t12026.ipynb"
+
+          # Check if the output file has changed
+          if [[ -n $(git status -s "24f2004142-notebook-t12026.ipynb") ]]; then
+            git add "24f2004142-notebook-t12026.ipynb"
+            git commit -m "🤖 auto: generate submission notebook [skip ci]"
+            git push origin output
+          else
+            echo "🚫 No changes detected in the generated notebook."
           fi
