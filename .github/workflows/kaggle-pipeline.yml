@@ -74,16 +74,16 @@ jobs:
 
           echo "ℹ️ Switching to output branch..."
           git fetch origin output
-          git checkout output || git checkout --orphan output          
-          git merge master --allow-unrelated-histories -X ours || true
+          git checkout output || git checkout --orphan output
 
+          echo "ℹ️ Restoring notebook..."
           mv /tmp/submission.ipynb "24f2004142-notebook-t12026.ipynb"
 
           # Check if the output file has changed
           if [[ -n $(git status -s "24f2004142-notebook-t12026.ipynb") ]]; then
             git add "24f2004142-notebook-t12026.ipynb"
             git commit -m "🤖 auto: generate submission notebook [skip ci]"
-            git push origin output
+            git push origin output --force
           else
             echo "🚫 No changes detected in the generated notebook."
           fi
