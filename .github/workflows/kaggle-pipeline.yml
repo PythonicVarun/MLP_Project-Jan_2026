@@ -73,9 +73,9 @@ jobs:
           cp "24f2004142-notebook-t12026.ipynb" /tmp/submission.ipynb
 
           echo "ℹ️ Switching to output branch..."
-          git fetch origin output || git checkout --orphan output
-          git checkout output || git checkout -b output
-          git pull origin master || true
+          git fetch origin output
+          git checkout output || git checkout --orphan output          
+          git merge master --allow-unrelated-histories -X ours || true
 
           mv /tmp/submission.ipynb "24f2004142-notebook-t12026.ipynb"
 
