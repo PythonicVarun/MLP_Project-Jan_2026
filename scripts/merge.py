@@ -32,8 +32,9 @@ def demote_headers(nb):
 def merge_notebooks():
     """
     Merges all notebooks in the SOURCE_FOLDER into a single notebook.
-    It adds a markdown cell at the top with an automated merge message and a code cell to
-    stop execution. It also adds a 'Milestones' markdown cell before merging the content of the notebooks.
+    Adds a markdown cell at the top with an automated merge message and a code cell to
+    stop execution, along with a 'Milestones' markdown cell before merging the content
+    of the notebooks.
     """
     if os.path.exists(TARGET_NOTEBOOK):
         with open(TARGET_NOTEBOOK, "r", encoding="utf-8") as f:
