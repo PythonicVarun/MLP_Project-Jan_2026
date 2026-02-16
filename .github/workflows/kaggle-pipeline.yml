@@ -2,6 +2,8 @@ name: Build, Ty Check & Deploy
 
 on:
   push:
+    branches:
+      - master
     paths:
       - 'milestones/**.ipynb'
       - 'competition.ipynb'
@@ -39,7 +41,7 @@ jobs:
         run: uvx ty check .
 
       - name: 📈 Push to Kaggle
-        if: success()
+        if: success() && github.event_name == 'push'
         env:
           KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
         run: |
@@ -73,6 +75,7 @@ jobs:
           echo "ℹ️ Switching to output branch..."
           git fetch origin output || git checkout --orphan output
           git checkout output || git checkout -b output
+          git pull origin master || true
 
           mv /tmp/submission.ipynb "24f2004142-notebook-t12026.ipynb"
 
