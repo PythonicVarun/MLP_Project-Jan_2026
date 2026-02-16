@@ -79,7 +79,8 @@ jobs:
           fi
 
           echo "ℹ️ Switching to output branch..."
-          git checkout -B output origin/output
+          git fetch origin output || true
+          git checkout -B output
 
           echo "ℹ️ Restoring notebook..."
           mv /tmp/submission.ipynb "$FILENAME"
