@@ -19,3 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added english stop words in text cleaning function, which improved the model performance by **$\sim$ 0.5%**.
 - Increased max features in TF-IDF vectorizer from 2500 to 3000, which improved the model performance by **$\sim$ 0.5%**.
 - Added MLP model for ensemble, which improved the model performance by **$\sim$ 1%**.
+
+## [[e9359e8](https://github.com/PythonicVarun/MLP_Project-Jan_2026/commit/e9359e86f9bfb1899cef986afd4e0baf3941039c)]
+- Converted feature columns to float32, which reduced the memory usage and model building time by approximately 4 hours.
