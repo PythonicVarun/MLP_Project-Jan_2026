@@ -16,4 +16,4 @@ wheels/
 .idea/
 
 # Temporary scratch files
-scratch.ipynb
+scratch/
