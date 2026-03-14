@@ -96,5 +96,3 @@ jupyter lab competition.ipynb
 **Varun Agnihotri (@PythonicVarun)**
 - [GitHub](https://github.com/PythonicVarun)
 - [Kaggle](https://kaggle.com/PythonicVarun)
-
----
