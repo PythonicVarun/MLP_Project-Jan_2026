@@ -63,6 +63,13 @@ Only the following libraries were allowed to be used in the competition:
 11. [Lightgbm](https://lightgbm.readthedocs.io/en/stable/)
 12. [Plotly](https://plotly.com/)
 13. [statsmodel](https://www.statsmodels.org/stable/index.html)
+14. [CatBoost](https://catboost.ai/docs/en/) [^1]
+
+[^1]: Clarified by Course Instructor [here](https://discourse.onlinedegree.iitm.ac.in/t/clarification-regarding-allowed-libraries/197084/7).
+
+We are allowed to utilize GPU for training XGBoost and LightGBM models. [^2]
+
+[^2]: Clarified by Course Instructor [here](https://discourse.onlinedegree.iitm.ac.in/t/doubt-regarding-allowed-libraries/181636/5).
 
 **Note:** These libraries are already installed in your Kaggle notebook. Python in-built libraries can also be used. *Using libraries like TensorFlow, PyTorch, NLTK, word2vec, textblob etc is **NOT** allowed*.
 
@@ -89,3 +96,5 @@ jupyter lab competition.ipynb
 **Varun Agnihotri (@PythonicVarun)**
 - [GitHub](https://github.com/PythonicVarun)
 - [Kaggle](https://kaggle.com/PythonicVarun)
+
+---
