@@ -57,11 +57,12 @@ jobs:
           # github.event.before = commit before push
           # github.sha = current commit
           CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" ${{ github.sha }})
-          if echo "$CHANGED_FILES" | grep -qx "$TARGET_FILE"; then
-            echo "✅ Changes detected in $TARGET_FILE. Pushing to Kaggle..."
+          if echo "$CHANGED_FILES" | grep -qF "$TARGET_FILE" || \
+            echo "$CHANGED_FILES" | grep -qF "kernel-metadata.json"; then
+            echo "✅ Changes detected in $TARGET_FILE or kernel-metadata.json. Pushing to Kaggle..."
             uvx kaggle kernels push
           else
-            echo "🚫 No changes detected in $TARGET_FILE. Skipping push."
+            echo "🚫 No changes detected in $TARGET_FILE or kernel-metadata.json. Skipping push."
           fi
 
       - name: 💾 Push to 'output' branch
