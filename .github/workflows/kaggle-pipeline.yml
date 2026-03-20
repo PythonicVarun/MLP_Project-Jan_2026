@@ -57,7 +57,7 @@ jobs:
           # github.event.before = commit before push
           # github.sha = current commit
           CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" ${{ github.sha }})
-          if [[ "$CHANGED_FILES" == "$TARGET_FILE" ]]; then
+          if echo "$CHANGED_FILES" | grep -qx "$TARGET_FILE"; then
             echo "✅ Changes detected in $TARGET_FILE. Pushing to Kaggle..."
             uvx kaggle kernels push
           else
@@ -84,7 +84,7 @@ jobs:
           echo "ℹ️ Restoring notebook..."
           mv /tmp/submission.ipynb "$FILENAME"
 
-          if echo "$CHANGED_FILES" | grep -qx "$TARGET_FILE"; then
+          if [[ -n $(git status -s "$FILENAME") ]]; then
             git add "$FILENAME"
             git commit -m "🤖 auto: update submission notebook"
             git push origin output
