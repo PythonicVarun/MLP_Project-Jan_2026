@@ -84,7 +84,7 @@ jobs:
           echo "ℹ️ Restoring notebook..."
           mv /tmp/submission.ipynb "$FILENAME"
 
-          if [[ -n $(git status -s "$FILENAME") ]]; then
+          if echo "$CHANGED_FILES" | grep -qx "$TARGET_FILE"; then
             git add "$FILENAME"
             git commit -m "🤖 auto: update submission notebook"
             git push origin output
