@@ -17,6 +17,5 @@
     "competition_sources": [
         "comment-category-prediction-challenge"
     ],
-    "model_sources": [],
-    "machine_shape": "NvidiaTeslaT4"
+    "model_sources": []
 }
