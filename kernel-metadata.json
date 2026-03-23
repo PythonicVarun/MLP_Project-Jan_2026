@@ -18,5 +18,6 @@
         "comment-category-prediction-challenge"
     ],
     "model_sources": [],
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:9fa0da194fad2241d3f01a80581cbecbd3a258b4d1b695e2cbbbc62a0fd205ac",
     "machine_shape": "NvidiaTeslaT4"
 }
